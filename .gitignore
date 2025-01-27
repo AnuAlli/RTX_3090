@@ -11,3 +11,7 @@ scraper.log
 __pycache__/
 *.py[cod]
 venv/*.log
+.env
+*.log
+__pycache__/
+venv/.env
