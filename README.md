@@ -25,3 +25,4 @@ RTX 3090 Price Tracker is a web scraping tool designed to monitor and track the 
 ```bash
 git clone https://github.com/yourusername/RTX_3090.git
 cd RTX_3090# Ebay_bot
+# Ebay_bot
