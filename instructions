@@ -1,0 +1,106 @@
+### **Project Architecture for eBay RTX 3090 Scraping Bot**  
+**Objective**: Build a bot to scrape eBay every 5 minutes for RTX 3090 GPUs listed under $500 in the "Buy It Now" section and send SMS alerts.  
+
+---
+
+### **1. Technical Stack**  
+- **Language**: Python (for scripting and automation).  
+- **Libraries**:  
+  - `requests`/`httpx` for HTTP requests.  
+  - `BeautifulSoup`/`lxml` for HTML parsing.  
+  - `twilio` for SMS notifications.  
+  - `apscheduler`/`schedule` for task scheduling.  
+- **Tools**:  
+  - Proxy rotation service (e.g., BrightData, ScraperAPI) to avoid IP bans.  
+  - Headless browser (optional, e.g., `selenium` if eBay requires JS rendering).  
+
+---
+
+### **2. Workflow Design**  
+#### **Phase 1: Scraping eBay Listings**  
+- **URL Construction**:  
+  - Build eBay search URL:  
+    ```python
+    search_url = "https://www.ebay.com/sch/i.html?_nkw=rtx+3090&LH_BIN=1&_sop=15"
+    ```  
+    - `LH_BIN=1`: Filters "Buy It Now" listings.  
+    - `_sop=15`: Sorts by "Newly Listed."  
+
+- **HTTP Request**:  
+  - Use `requests` with rotating **User-Agent headers** and **proxies** to mimic organic traffic.  
+  - Add **rate limiting** (e.g., 2-5 sec delays) to avoid triggering anti-scraping mechanisms.  
+
+- **HTML Parsing**:  
+  - Extract listings using CSS selectors targeting:  
+    - **Title**: `.s-item__title`  
+    - **Price**: `.s-item__price`  
+    - **Link**: `.s-item__link`  
+  - Filter listings where price < $500.  
+
+#### **Phase 2: SMS Notification**  
+- **Twilio Integration**:  
+  - Use Twilio’s API to send SMS alerts.  
+  - Format message with:  
+    - Product title.  
+    - Price.  
+    - Direct link to the listing.  
+
+#### **Phase 3: Scheduling & Automation**  
+- **APScheduler**:  
+  - Schedule the scraping task to run every 5 minutes:  
+    ```python
+    from apscheduler.schedulers.blocking import BlockingScheduler
+    scheduler = BlockingScheduler()
+    scheduler.add_job(scrape_and_alert, 'interval', minutes=5)
+    scheduler.start()
+    ```  
+
+- **Deduplication**:  
+  - Track already alerted listings using a lightweight database (e.g., `SQLite` or `Redis`) to avoid duplicates.  
+
+---
+
+### **3. Anti-Scraping Mitigation**  
+- **Proxies**: Rotate IPs using a proxy service to prevent eBay from blocking requests.  
+- **Headers**: Randomize User-Agent strings for each request.  
+- **CAPTCHA Handling**:  
+  - Integrate a CAPTCHA-solving service (e.g., 2Captcha) if triggered.  
+- **Logging**:  
+  - Log errors (e.g., blocked requests, parsing failures) to a file for debugging.  
+
+---
+
+### **4. Deployment**  
+- **Server Setup**:  
+  - Deploy on a cloud server (AWS EC2, DigitalOcean) or Raspberry Pi for 24/7 operation.  
+- **Process Management**:  
+  - Use `systemd` (Linux) or `PM2` (Node.js) to ensure the script restarts on failure.  
+- **Monitoring**:  
+  - Set up alerts for script downtime (e.g., Healthchecks.io).  
+
+---
+
+### **5. Ethical Considerations**  
+- **robots.txt Compliance**: Check eBay’s `robots.txt` for scraping permissions.  
+- **Rate Limiting**: Ensure requests don’t overload eBay’s servers.  
+
+---
+
+### **6. Testing**  
+- **Unit Tests**: Validate parsing logic and SMS functionality.  
+- **Dry Runs**: Test with dummy listings to confirm alert triggers.  
+- **Edge Cases**: Handle price formatting variations (e.g., "$499.99" vs. "499.99").  
+
+--- 
+
+### **Final Output**  
+The bot will:  
+1. Scrape eBay every 5 minutes.  
+2. Filter RTX 3090 listings under $500.  
+3. Send SMS alerts via Twilio.  
+4. Log activity and errors for auditability.  
+
+**Tools Diagram**:  
+```  
+Scraper → Proxy → eBay → Parser → Filter → Twilio → Client  
+```
