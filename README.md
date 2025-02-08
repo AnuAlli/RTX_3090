@@ -150,7 +150,10 @@ running successfully.
 
 
 ### Dashboard View
-![Dashboard](images/dashboard.png)
+![image](https://github.com/user-attachments/assets/fc7712d7-2c86-4639-a62e-7097bcc0a10b)
+![image](https://github.com/user-attachments/assets/3c71c431-17d5-42d2-9fe0-89d9a834a84c)
+
+
 
 ### Price History Graph
 ![Price History](images/price-history.png)
