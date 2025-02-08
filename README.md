@@ -1,11 +1,11 @@
 # RTX 3090 Price Tracker
 
-![RTX 3090](images/rtx3090.png)
+![image](https://github.com/user-attachments/assets/1fdf49e7-9de3-4847-a411-28b0e7d3ebdc)
+
 
 ## Project Background
 With the rapid advancement of AI technology and the increasing demand for computational power, building a personal AI server has become more accessible. However, sourcing current-generation graphics cards at reasonable prices remains a significant challenge. This project was born from the need to find more affordable alternatives like the RTX 3090.
 
-![GPU Price Trends](images/gpu-price-trends.png)
 
 ## Motivation
 Manual monitoring of eBay listings is time-consuming and inefficient. This automated solution eliminates the need for constant manual checks by:
@@ -17,7 +17,6 @@ Manual monitoring of eBay listings is time-consuming and inefficient. This autom
 ## Overview
 RTX 3090 Price Tracker is a web scraping tool designed to monitor and track the prices of NVIDIA RTX 3090 graphics cards on eBay. The program automatically scans eBay listings at customizable intervals and sends real-time text message notifications using Twilio API when listings matching your criteria are found.
 
-![Price Tracking Demo](images/price-tracking-demo.png)
 
 ## Features
 - Automated eBay scanning every 3 seconds (customizable interval)
@@ -73,7 +72,16 @@ scan_interval: 3  # Scanning interval in seconds
 3. Add them to your .env file
 4. Add your phone number to receive notifications
 
-![Twilio Setup](images/twilio-setup.png)
+![image](https://github.com/user-attachments/assets/41a1564a-77c0-4c16-b41f-0fc3a7dc7e7b)
+![image](https://github.com/user-attachments/assets/72c4f8ac-a66d-4e26-80ff-3d5a0235a6da)
+![image](https://github.com/user-attachments/assets/6970bfef-ab4d-4171-b091-470f07fa3ef2)
+
+
+
+
+
+
+
 
 ## Usage
 1. Start the price tracker:
@@ -88,7 +96,14 @@ The program will:
 - Send SMS notifications for new matches
 - Include direct eBay listing links in messages
 
-![SMS Notification Example](images/sms-notification.png)
+## ![SMS Notification Example]
+![image](https://github.com/user-attachments/assets/1a916a76-387f-4727-9889-f90eac8a2c70)
+![image](https://github.com/user-attachments/assets/0efef421-9c2a-401a-b064-44d2cab23ed9)
+
+
+
+
+
 
 ## Notifications
 You'll receive SMS notifications containing:
@@ -155,22 +170,9 @@ running successfully.
 
 
 
-### Price History Graph
-![Price History](images/price-history.png)
-
-## How It Works
-
-![System Architecture](images/system-architecture.png)
-
-1. **Web Scraping**: The tool regularly scans eBay listings using Python's web scraping capabilities
-2. **Price Analysis**: Compares found listings against your specified criteria
-3. **Notification System**: Sends instant SMS alerts via Twilio when matches are found
-4. **Mobile Access**: Provides direct purchase links for quick action
-
 ## Success Stories
 Users have reported finding RTX 3090 cards at 20-30% below market prices using this tool. The instant notifications give you a competitive advantage in securing the best deals.
 
-![Success Metrics](images/success-metrics.png)
 
 ## Contact & Support
 For questions, feature requests, or bug reports, please:
