@@ -77,6 +77,12 @@ scan_interval: 3  # Scanning interval in seconds
 ![image](https://github.com/user-attachments/assets/6970bfef-ab4d-4171-b091-470f07fa3ef2)
 
 
+To access your account SID and Auth Token on Twilio, click on this link:(https://www.twilio.com/console)and follow the visual instructions in the image below. 
+
+![image](https://github.com/user-attachments/assets/b782e706-261b-4116-a166-dd1fa119831f)
+
+
+
 
 
 
