@@ -146,8 +146,6 @@ Check out the `ebay_scraper.py` file for the core scraping logic that you can mo
 The image below is just a visual representation of the program 
 running successfully.
 
-![Program Running Successfully](./image1.png)
-
 ![image](https://github.com/user-attachments/assets/29127807-c03e-461c-8763-c4dad52d0947)
 
 
